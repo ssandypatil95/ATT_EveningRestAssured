@@ -1,5 +1,6 @@
 package basiccalls;
 
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import io.restassured.RestAssured;
@@ -31,6 +32,19 @@ public class Get_UserDetails {
 		String stringResponse = response.asPrettyString();
 		
 		System.out.println(stringResponse);
+		
+		int statusCode = response.statusCode();//status code received in the response
+		
+		System.out.println(statusCode);
+		
+		Assert.assertEquals(statusCode, 200);
+		
+		long timevalue = response.getTime();
+		
+		System.out.println(timevalue);
+		
+		
+		
 			
 	}
 
