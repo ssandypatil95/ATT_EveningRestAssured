@@ -18,9 +18,9 @@ public class CreateWorkspace {
 		
 		.body("{\r\n"
 				+ "    \"workspace\": {\r\n"
-				+ "        \"name\": \"RestAssured Workspace to get data\",\r\n"
+				+ "        \"name\": \"RestAssured Workspace2 to get data\",\r\n"
 				+ "        \"type\": \"personal\",\r\n"
-				+ "        \"description\": \"This workspace for RestAssured \"\r\n"
+				+ "        \"description\": \"RestAssured \"\r\n"
 				+ "    }\r\n"
 				+ "}")
 		
