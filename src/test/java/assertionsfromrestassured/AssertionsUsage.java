@@ -19,9 +19,9 @@ public class AssertionsUsage {
 	{
 		RestAssured.baseURI = "https://api.getpostman.com";
 		
-		Response response = given()
+							given()
 		
-							.header("x-api-key", "api key")
+							.header("x-api-key", "PMAK-64ba98e472efea0042e0d58f-0cfa5114cafd0db13eb718a09f04be5a4e")
 		
 							.when()
 		
@@ -39,13 +39,25 @@ public class AssertionsUsage {
 							
 							.log().all()
 		
-							.extract()
-			
-							.response();
-		
-		
-		
-		
+							.body("workspaces[1]", hasKey("id"))// verifying whether array has an element id
+							
+							.body("workspaces.name", contains( "Team Workspace", "My Workspace", "My Workspace", "ATTWorkspace", "TestWorkspace", "Test Workspace", "ATTObjectWorkspace", "Manual Workspace", "ATT Evening batch Workspace2", "RestAssured Workspace to get data"))
+				// above line validates whether the name has all the possible values in a specific sequence using contains method
+							
+							.body("workspaces.name", containsInAnyOrder("Manual Workspace","Team Workspace", "My Workspace", "My Workspace", "ATTWorkspace", "TestWorkspace", "Test Workspace", "ATTObjectWorkspace",  "ATT Evening batch Workspace2", "RestAssured Workspace to get data"))
+							
+//		above method validates whether the name of all the workspaces are present into the body but does't matter whether they are in the specific sequence or not
+							
+							.body("workspaces.name", hasItem("ATTWorkspace"))
+//		above method validates whether name has one of the values --> 	ATTWorkspace
+							
+							.body("workspaces[1]", hasEntry("type", "team"))
+//		above method validates whether workspace 1 index has an entry(key value pair) 					
+							.body("workspaces[1].name", equalToIgnoringCase("My WorkSpace"))
+//				above method validates whether the data is matching with the response by ignoring the case
+							.body("workspaces.name", hasItems("ATTWorkspace","Manual Workspace" ));
+							
+						
 	}
 	
 	
