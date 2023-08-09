@@ -2,16 +2,16 @@
 <testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2023-08-08T21:22:37 IST" name="Default suite" finished-at="2023-08-08T21:22:41 IST" duration-ms="4423">
+  <suite started-at="2023-08-09T21:24:37 IST" name="Default suite" finished-at="2023-08-09T21:24:49 IST" duration-ms="11583">
     <groups>
     </groups>
-    <test started-at="2023-08-08T21:22:37 IST" name="Default test" finished-at="2023-08-08T21:22:41 IST" duration-ms="4423">
-      <class name="spotifyapis.Get_AllPlayList">
-        <test-method signature="fetchAllPlaylist()[pri:0, instance:spotifyapis.Get_AllPlayList@32b260fa]" started-at="2023-08-08T21:22:37 IST" name="fetchAllPlaylist" finished-at="2023-08-08T21:22:41 IST" duration-ms="4281" status="PASS">
+    <test started-at="2023-08-09T21:24:37 IST" name="Default test" finished-at="2023-08-09T21:24:49 IST" duration-ms="11583">
+      <class name="serializationanddeserialization.CreateUser2">
+        <test-method signature="createAnUser()[pri:1, instance:serializationanddeserialization.CreateUser2@32b260fa]" started-at="2023-08-09T21:24:37 IST" name="createAnUser" finished-at="2023-08-09T21:24:49 IST" duration-ms="11452" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- fetchAllPlaylist -->
-      </class> <!-- spotifyapis.Get_AllPlayList -->
+        </test-method> <!-- createAnUser -->
+      </class> <!-- serializationanddeserialization.CreateUser2 -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>

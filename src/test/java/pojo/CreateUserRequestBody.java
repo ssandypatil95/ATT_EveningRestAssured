@@ -1,9 +1,12 @@
 package pojo;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class CreateUserRequestBody {
 	
 	Integer id;
-	String username;
+	String User_name;
 	String firstName;
 	String lastName;
 	String email;
@@ -18,10 +21,10 @@ public class CreateUserRequestBody {
 		this.id = id;
 	}
 	public String getUsername() {
-		return username;
+		return User_name;
 	}
 	public void setUsername(String username) {
-		this.username = username;
+		this.User_name = username;
 	}
 	public String getFirstName() {
 		return firstName;

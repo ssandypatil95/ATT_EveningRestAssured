@@ -1,10 +1,11 @@
 package spotifyapis;
 
 import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import static io.restassured.RestAssured.*;
+
+import io.restassured.RestAssured;
 import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.builder.ResponseSpecBuilder;
 import io.restassured.filter.log.LogDetail;
@@ -12,10 +13,8 @@ import io.restassured.http.ContentType;
 import io.restassured.specification.RequestSpecification;
 import io.restassured.specification.ResponseSpecification;
 
-import static org.hamcrest.Matchers.*;
 
-public class Create_PlayList {
-
+public class NegativeScenarios {
 	RequestSpecification requestSpecification;
 	ResponseSpecification responseSpecification;
 
@@ -44,17 +43,18 @@ public class Create_PlayList {
 	}
 	
 	
-	@Test
-	public void createPlaylist()
+	@Test(priority = 1)
+	public void shouldNotBeAbleToCreatePlayList()
 	{
-		given(requestSpecification)
+		given()
+		
+		.spec(requestSpecification)
 		
 		.body("{\r\n"
-				+ "    \"name\": \"Patriotic songs\",\r\n"
-				+ "    \"description\": \"Play list 3\",\r\n"
+				+ "    \"name\": \"\",\r\n"
+				+ "    \"description\": \"Test playlist for ATT evening\",\r\n"
 				+ "    \"public\": false\r\n"
 				+ "}")
-		
 		.when()
 		
 		.post("users/31p6yxkpbqyn2ex2srl3rxb5n23i/playlists")
@@ -63,11 +63,41 @@ public class Create_PlayList {
 		
 		.spec(responseSpecification)
 		
-		.body("name", equalTo("Patriotic songs"));
+		.assertThat()
 		
+		.statusCode(400);
+				
+	}
+	
+	
+	@Test(priority = 2)
+	public void shouldNotBeAuthorized()
+	{
+		RestAssured.baseURI = "https://api.spotify.com/v1";
+				
+		given()
 		
+		.headers("Authorization",
+				"Bearer kshfkhkjfhksdhfkshdkfsdfhjsdhfkjsfhkjsdfhkjsd")
+		.headers("Content-Type", "application/json")
 		
+		.body("{\r\n"
+				+ "    \"name\": \"Test create playlist\",\r\n"
+				+ "    \"description\": \"Test playlist for ATT evening\",\r\n"
+				+ "    \"public\": false\r\n"
+				+ "}")
+		.when()
 		
+		.post("users/31p6yxkpbqyn2ex2srl3rxb5n23i/playlists")
+		
+		.then()
+		
+		.spec(responseSpecification)
+		
+		.assertThat()
+		
+		.statusCode(401);
+				
 	}
 
 }
