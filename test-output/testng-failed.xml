@@ -3,11 +3,11 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="spotifyapis.Create_PlayList">
+      <class name="spotifyapis.ChangePlaylistDetails">
         <methods>
-          <include name="createPlaylist"/>
+          <include name="updatePlayList"/>
         </methods>
-      </class> <!-- spotifyapis.Create_PlayList -->
+      </class> <!-- spotifyapis.ChangePlaylistDetails -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
